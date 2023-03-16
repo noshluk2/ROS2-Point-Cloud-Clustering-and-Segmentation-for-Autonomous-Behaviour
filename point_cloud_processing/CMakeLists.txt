@@ -17,9 +17,14 @@ add_executable(pcd_import src/0_table_scene.cpp)
 target_link_libraries(pcd_import ${PCL_LIBRARIES})
 
 
+add_executable(plane_cloud src/1_planner_cloud.cpp)
+target_link_libraries(plane_cloud ${PCL_LIBRARIES})
+
+
+
 
 install(TARGETS
-  pcd_import
+  pcd_import plane_cloud
   DESTINATION lib/${PROJECT_NAME})
 
 
