@@ -204,7 +204,15 @@
     <child link="base_scan"/>
     <origin xyz="-0.064 0 0.122" rpy="0 0 0"/>
   </joint>
-
+  <gazebo>
+    <plugin name="p3d" filename="libgazebo_ros_p3d.so">
+      <!-- <robotNamespace>/prius</robotNamespace> -->
+      <bodyName>base_scan</bodyName>
+      <topicName>base_pose_ground_truth</topicName>
+      <frameName>map</frameName>
+      <updateRate>100.0</updateRate>
+    </plugin>
+  </gazebo>
   <link name="base_scan">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
