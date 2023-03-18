@@ -1,4 +1,5 @@
 #include <iostream>
+#include <filesystem>
 #include <pcl/point_types.h>
 #include <pcl/io/pcd_io.h>
 
@@ -22,8 +23,14 @@ int main()
 
     cloud.push_back(point);
     }
-    std::string path = "/home/luqman/ros2_ws/src/ROS2-Point-Cloud-Clustering-and-Segmentation-for-Autonomous-Behaviour/point_cloud_processing/point_clouds/circular_cloud.pcd";
-    pcl::io::savePCDFileASCII(path,cloud);
+
+
+    std::string pcd_file_name = "circular_cloud.pcd";
+	std::filesystem::path ros2_ws_path    = std::filesystem::current_path();
+    std::filesystem::path point_cloud_dir = ros2_ws_path/"src/ROS2-Point-Cloud-Clustering-and-Segmentation-for-Autonomous-Behaviour/point_cloud_processing/point_clouds/";
+    std::string pcd_file_path             = point_cloud_dir/pcd_file_name;
+
+    pcl::io::savePCDFileASCII(pcd_file_path,cloud);
 
 
 

@@ -1,14 +1,29 @@
-#include <iostream>
+#include <pcl/point_cloud.h>
 #include <pcl/point_types.h>
+
+#include <iostream>
 #include <pcl/io/pcd_io.h>
+#include <pcl/point_types.h>
 #include <pcl/filters/voxel_grid.h>
 #include <pcl/filters/passthrough.h>
 #include <pcl/sample_consensus/method_types.h>
 #include <pcl/sample_consensus/model_types.h>
 #include <pcl/segmentation/sac_segmentation.h>
+#include <pcl/segmentation/extract_clusters.h>
 #include <pcl/filters/extract_indices.h>
 
-typedef pcl::PointXYZRGB PointT;
+#include <pcl/search/search.h>
+#include <pcl/search/kdtree.h>
+#include <pcl/features/normal_3d.h>
+#include <pcl/visualization/cloud_viewer.h>
+#include <pcl/filters/filter_indices.h>
+#include <pcl/segmentation/region_growing.h>
+#include <pcl/filters/extract_indices.h>
+#include <pcl/segmentation/sac_segmentation.h>
+#include <fstream>
+
+
+typedef pcl::PointXYZ PointT;
 
 void cloud_saver(const std::string& file_name,std::string& path, pcl::PointCloud<PointT>::Ptr cloud_arg){
     pcl::PCDWriter cloud_writer;
@@ -65,10 +80,73 @@ int main()
     indices_extractor.setIndices(inliers);
     indices_extractor.setNegative(false);
     indices_extractor.filter(*plane_segmented_cloud);
+    cloud_saver("plane.pcd",path,plane_segmented_cloud);
+
+    // ********************************     Cylinder Segmentation
+    // Normal Extraction Objects
+    pcl::ModelCoefficients::Ptr       cylinder_co    (new pcl::ModelCoefficients);
+	pcl::PointIndices::Ptr            cylinder_in    (new pcl::PointIndices);
+    pcl::search::KdTree<PointT>::Ptr  tree           (new pcl::search::KdTree<PointT> ());
+    pcl::PointCloud<pcl::Normal>::Ptr cloud_normals  (new pcl::PointCloud<pcl::Normal>);
+    pcl::PointCloud<PointT>::Ptr      cylinder_cloud (new pcl::PointCloud<PointT> ());
+    // Normals computation objects
+    pcl::NormalEstimation<PointT,pcl::Normal>            normals_estimator;
+    pcl::SACSegmentationFromNormals<PointT, pcl::Normal> cylinder_segmentor;
+    pcl::ExtractIndices<PointT>                          cylinder_indices_extractor;
+    pcl::ExtractIndices<pcl::Normal>                     cylinder_normal_indices_extractor;
+// Performing estimation of normals
+    normals_estimator.setSearchMethod(tree);
+    normals_estimator.setInputCloud(plane_segmented_cloud);
+    normals_estimator.setKSearch(30);
+    normals_estimator.compute(*cloud_normals);
+
+    // Parameters for segmentation
+    cylinder_segmentor.setOptimizeCoefficients(true);
+	cylinder_segmentor.setModelType(pcl::SACMODEL_CYLINDER);
+	cylinder_segmentor.setMethodType(pcl::SAC_RANSAC);
+	cylinder_segmentor.setNormalDistanceWeight(0.5);
+	cylinder_segmentor.setMaxIterations(10000);
+	cylinder_segmentor.setDistanceThreshold(0.05);
+	cylinder_segmentor.setRadiusLimits(0.1, 0.4);
+  int looping_var=0;
+
+    while(true){
 
 
-    // ********************************     Writing Cloud
-    cloud_saver("plane_segmented.pcd",path,plane_segmented_cloud);
-    return 0;
+    // Appplying segmentation
+    cylinder_segmentor.setInputCloud(plane_segmented_cloud);
+	cylinder_segmentor.setInputNormals(cloud_normals);
+	cylinder_segmentor.segment(*cylinder_in,*cylinder_co);
 
+    // extracting indices
+    cylinder_indices_extractor.setInputCloud(plane_segmented_cloud);
+    cylinder_indices_extractor.setIndices(cylinder_in);
+    cylinder_indices_extractor.setNegative(false);
+    cylinder_indices_extractor.filter(*cylinder_cloud);
+
+    if(!cylinder_cloud->points.empty()){
+        std::stringstream loop_name_cloud; loop_name_cloud <<"cloud_"<<looping_var<<".pcd";
+        std::cout<<"Cloud Contains " <<cylinder_cloud->points.size()<<std::endl;
+        if(cylinder_cloud->points.size() > 50){
+          cloud_saver(loop_name_cloud.str(),path,cylinder_cloud);
+            looping_var++;
+        }
+
+        cylinder_indices_extractor.setNegative(true);
+        cylinder_indices_extractor.filter(*plane_segmented_cloud);
+
+        // processing normals
+        cylinder_normal_indices_extractor.setInputCloud(cloud_normals);
+        cylinder_normal_indices_extractor.setIndices(cylinder_in);
+        cylinder_normal_indices_extractor.setNegative(true);
+        cylinder_normal_indices_extractor.filter(*cloud_normals);
+
+    }
+    else{
+        return 0;
+    }
+
+
+    }
+  return 0;
 }
