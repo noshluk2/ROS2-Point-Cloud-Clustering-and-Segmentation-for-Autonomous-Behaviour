@@ -8,6 +8,10 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(PCL REQUIRED)
 
+find_package(rclcpp REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(pcl_conversions REQUIRED)
+
 include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
@@ -29,14 +33,20 @@ target_link_libraries(filtering_segmentation ${PCL_LIBRARIES})
 add_executable(path_creation src/4_point_path_drawing.cpp)
 target_link_libraries(path_creation ${PCL_LIBRARIES})
 
+add_executable(kitti_voxel src/5_kitti_data_voxel.cpp)
+ament_target_dependencies(kitti_voxel rclcpp sensor_msgs pcl_conversions)
+target_link_libraries(kitti_voxel ${PCL_LIBRARIES})
+
+
 
 
 install(TARGETS
-  pcd_import plane_cloud circular_cloud filtering_segmentation  path_creation
+  pcd_import plane_cloud circular_cloud filtering_segmentation  path_creation kitti_voxel
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY
   launch
+  rviz
   DESTINATION share/${PROJECT_NAME}/
 )
 
