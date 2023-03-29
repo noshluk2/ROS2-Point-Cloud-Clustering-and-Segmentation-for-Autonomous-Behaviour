@@ -22,7 +22,7 @@ In addition, we will explore cylindrical and planar segmentation, two important 
 This is repository for the course **ROS2 Point Clouds For Autonomous Self Driving Car using PCL** availble at Udemy . Complete source code is open sourced.
 
  ![alt text](https://github.com/noshluk2/ROS2-Point-Cloud-Clustering-and-Segmentation-for-Autonomous-Behaviour/blob/main/image_resources/main_cover.png)
-- **[[Get course Here]](https://www.udemy.com/course/draft/5219402/?couponCode=PCL_LAUNCH)**
+- **[[Get course Here]](https://www.udemy.com/course/ros2-point-clouds-for-autonomous-self-driving-car-using-pcl/?couponCode=PCL_LAUNCH)**
 ----
 ## Using this Repository
 * Move into your workspace/src folder
@@ -59,12 +59,12 @@ echo "source /path/to/ros2_ws/install/setup.bash" >> ~/.bashrc
 
 ---
 ## Features
-* **Creating Random Point Clouds**
-  -  ![alt text](https://github.com/noshluk2/ROS2-Point-Cloud-Clustering-and-Segmentation-for-Autonomous-Behaviour/blob/main/image_resources/custom_pointcloud.gif)
+* **Creating Point Clouds**
+  -  ![alt text](https://github.com/noshluk2/ROS2-Point-Cloud-Clustering-and-Segmentation-for-Autonomous-Behaviour/blob/main/image_resources/custom.gif)
 * **Building Point Cloud Maps with RTAB-Map**
-  -  ![alt text](https://github.com/noshluk2/ROS2-Point-Cloud-Clustering-and-Segmentation-for-Autonomous-Behaviour/blob/main/image_resources/3d_pointcloud.gif)
+  -  ![alt text](https://github.com/noshluk2/ROS2-Point-Cloud-Clustering-and-Segmentation-for-Autonomous-Behaviour/blob/main/image_resources/rtabmap.gif)
 * **Processing Kitti Dataset**
-  - ![alt text](https://github.com/noshluk2/ROS2-Point-Cloud-Clustering-and-Segmentation-for-Autonomous-Behaviour/blob/main/image_resources/Kitti_dataset.gif)
+  - ![alt text](https://github.com/noshluk2/ROS2-Point-Cloud-Clustering-and-Segmentation-for-Autonomous-Behaviour/blob/main/image_resources/kitti.gif)
 
 
 
@@ -78,7 +78,7 @@ echo "source /path/to/ros2_ws/install/setup.bash" >> ~/.bashrc
 ## Link to the Course
 Below is a discounted coupon for people who want to take the course in which more explaination to this code has been added
 
-**[[Get course Here]](https://www.udemy.com/course/draft/5219402/?couponCode=PCL_LAUNCH)**
+**[[Get course Here]](https://www.udemy.com/course/ros2-point-clouds-for-autonomous-self-driving-car-using-pcl/?couponCode=PCL_LAUNCH)**
 
 ----
 
