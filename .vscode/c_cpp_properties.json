@@ -1,0 +1,59 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/luqman/ros2_ws/install/turtlebot3_gazebo/include/**",
+        "/home/luqman/ws_moveit2/install/pilz_industrial_motion_planner_testutils/include/**",
+        "/home/luqman/ws_moveit2/install/pilz_industrial_motion_planner/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_visual_tools/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_task_constructor_visualization/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_task_constructor_demo/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_task_constructor_core/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_ros_control_interface/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_simple_controller_manager/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_setup_assistant/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_setup_srdf_plugins/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_setup_core_plugins/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_setup_controllers/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_setup_app_plugins/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_setup_framework/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_servo/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_ros_visualization/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_hybrid_planning/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_ros_planning_interface/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_ros_benchmarks/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_ros_warehouse/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_ros_robot_interaction/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_ros_perception/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_ros_move_group/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_planners_ompl/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_ros_planning/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_ros_occupancy_map_monitor/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_kinematics/include/**",
+        "/home/luqman/ws_moveit2/install/chomp_motion_planner/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_core/include/**",
+        "/home/luqman/ws_moveit2/install/srdfdom/include/**",
+        "/home/luqman/ws_moveit2/install/rviz_marker_tools/include/**",
+        "/home/luqman/ws_moveit2/install/rosparam_shortcuts/include/**",
+        "/home/luqman/ws_moveit2/install/moveit_task_constructor_msgs/include/**",
+        "/opt/ros/humble/include/**",
+        "/home/luqman/ros2_ws/src/pcl_course/include/**",
+        "/home/luqman/ros2_ws/src/ros2_learners/navigation_tb3/include/**",
+        "/home/luqman/ros2_ws/src/ros2_learners/nodes/include/**",
+        "/home/luqman/ros2_ws/src/ros2_learners/point_cloud_perception/include/**",
+        "/home/luqman/ros2_ws/src/ros2_learners/turtlebot3_gazebo/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
