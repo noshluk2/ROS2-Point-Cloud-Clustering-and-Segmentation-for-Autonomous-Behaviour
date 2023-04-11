@@ -46,10 +46,15 @@ git clone https://github.com/noshluk2/ROS2-Point-Cloud-Clustering-and-Segmentati
 ```
 source /path/to/ros2_ws/install/setup.bash
 ```
-- (Optional for Power USERs only) Add source to this workspace into bash file
- ```
-echo "source /path/to/ros2_ws/install/setup.bash" >> ~/.bashrc
- ```
+- Make sure kitti data is in *~/ros2_ws/data*
+- Build Kitti Data Processing and run it
+```
+colcon build && ros2 launch  point_cloud_processing process_kitti.launch.py
+```
+- Run Rviz with config file
+```
+ros2 launch  point_cloud_processing bring_rviz.launch.py
+```
 ----
 ## Course Workflow
 - Creating Custom Point clouds using pcl in cpp
@@ -90,3 +95,4 @@ Muhammad Luqman (ROS2 Simulation and Control Systems) - [Profile Link](https://w
 ## License
 
 Distributed under the GNU-GPL License. See `LICENSE` for more information.
+
