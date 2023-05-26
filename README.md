@@ -22,7 +22,7 @@ In addition, we will explore cylindrical and planar segmentation, two important 
 This is repository for the course **ROS2 Point Clouds For Autonomous Self Driving Car using PCL** availble at Udemy . Complete source code is open sourced.
 
  ![alt text](https://github.com/noshluk2/ROS2-Point-Cloud-Clustering-and-Segmentation-for-Autonomous-Behaviour/blob/main/image_resources/main_cover.png)
-- **[[Get course Here]](https://www.udemy.com/course/ros2-point-clouds-for-autonomous-self-driving-car-using-pcl/?couponCode=PCL_LAUNCH)**
+- **[[Get course Here]](https://www.udemy.com/course/ros2-point-clouds-for-autonomous-self-driving-car-using-pcl/?couponCode=MAY_LEARN)**
 ----
 ## Using this Repository
 * Move into your workspace/src folder
@@ -83,7 +83,7 @@ ros2 launch  point_cloud_processing bring_rviz.launch.py
 ## Link to the Course
 Below is a discounted coupon for people who want to take the course in which more explaination to this code has been added
 
-**[[Get course Here]](https://www.udemy.com/course/ros2-point-clouds-for-autonomous-self-driving-car-using-pcl/?couponCode=PCL_LAUNCH)**
+**[[Get course Here]](https://www.udemy.com/course/ros2-point-clouds-for-autonomous-self-driving-car-using-pcl/?couponCode=MAY_LEARN)**
 
 ----
 
